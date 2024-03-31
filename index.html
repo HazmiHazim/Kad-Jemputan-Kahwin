@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Fawwaz & Aina</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="#" class="logo">Walimatulurus</a>
+        <a href="#" class="menu" onclick="toggleMenu()">
+            <ion-icon class="open" name="menu"></ion-icon>
+            <ion-icon class="close" name="close"></ion-icon>
+        </a>
+        <ul class="nav">
+            <li><a href="/" class="nav-btn active" onclick="resetHeader()"><ion-icon name="home"></ion-icon></a></li>
+            <li><a href="#" class="nav-btn" data-target="about">about</a></li>
+            <li><a href="#" class="nav-btn" data-target="services">tentang fawwaz & aina</a></li>
+            <li><a href="#" class="nav-btn" data-target="location">lokasi</a></li>
+            <li><a href="#" class="nav-btn" data-target="rsvp">ucapan</a></li>
+            <li><a href="#" class="nav-btn" data-target="kedatangan">rsvp</a></li>
+        </ul>
+        <!--<div class="search">
+            <li><a href="#" class="nav-btn" data-target="kedatangan">kedatangan</a></li>
+        </div>-->
+    </header>
+
+    <!-- Mobile Navigation -->
+    <ul class="nav-mobile">
+        <li>
+            <a href="/" class="nav-btn active" onclick="resetHeader()">
+                <ion-icon name="home"></ion-icon></a>
+        </li>
+        <li>
+            <a href="#" data-target="about">about</a>
+        </li>
+        <li>
+            <a href="#" data-target="services">services</a>
+        </li>
+        <li>
+            <a href="#" data-target="location">lokasi</a>
+        </li>
+        <li>
+            <a href="#" data-target="rsvp">rsvp</a>
+        </li>
+        <li>
+            <a href="#" data-target="kedatangan">kedatangan</a>
+        </li>
+    </ul>
+
+    <!-- Banner -->
+    <div class="banner container-fluid">
+        <div class="bg-slide slide-1 active">
+            <div class="content">
+                <img src="./images/bismillah.png" alt="" class="bismillah">
+                <div class="salam">
+                    <p class="intro">Assalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+                    <p class="intro">Dengan memohon rahmat dan redha Allah swt,</p>
+                    <p class="intro">Kami menjemput Tuan/Puan/Saudara/Saudari ke majlis kenduri kahwin</p>
+                </div>
+                <div class="pengantin">
+                    <p>Muhammad Fawwaz Bin Zairul Fuaad</p>
+                    <p>&</p>
+                    <p>Aina tah sape sape</p>
+                </div>
+                <ul>
+                    <li><span id="days"></span>Hari</li>
+                    <li><span id="hours"></span>Jam</li>
+                    <li><span id="minutes"></span>Minit</li>
+                    <li><span id="seconds"></span>Saat</li>
+                </ul>
+            </div>
+            <div class="circle bg">
+                <img src="./images/test.jpg" alt="">
+                <div class="circle large">
+                    <img src="./images/test.jpg" alt="">
+                    <div class="circle small">
+                        <img src="./images/test.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-slide slide-2">
+            <div class="content">
+                <h1>Resepsi</h1>
+                <p>Test</p>
+            </div>
+            <div class="circle bg">
+                <img src="./images/main.jpg" alt="">
+                <div class="circle large">
+                    <img src="./images/main.png" alt="">
+                    <div class="circle small">
+                        <img src="./images/main.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-slide slide-3">
+            <div class="content">
+                <h1>Ketibaan</h1>
+                <p>Test</p>
+            </div>
+            <div class="circle bg">
+                <img src="./images/test3.png" alt="">
+                <div class="circle large">
+                    <img src="./images/test3.png" alt="">
+                    <div class="circle small">
+                        <img src="./images/test3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="slide-loader">
+            <li><a class="slide-btn active" data-target="slide-1">1</a></li>
+            <li><a class="slide-btn" data-target="slide-2">2</a></li>
+            <li><a class="slide-btn" data-target="slide-3">3</a></li>
+        </ul>
+
+        <div class="share">
+            <p>share</p>
+            <a href="#"><ion-icon name="share"></ion-icon></a>
+        </div>
+
+        <div class="lead">
+            <svg viewBox="0 0 100 100" width="100" height="100">
+                <defs>
+                    <path id="circle" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+                </defs>
+                <text font-size="17">
+                    <textPath xlink:href="#circle">Selamat Berpuasa Dunia Tipu Tipu</textPath>
+                </text>
+            </svg>
+            <a href="#" class="move-down" onclick="initNavigation()"><ion-icon name="arrow-down"></ion-icon></a>
+        </div>
+    </div>
+
+    <!-- ***************** -->
+    <!-- Main Start -->
+    <main>
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="row">
+                    <h1>Fawwaz & Aina</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="img-box">
+                            <img src="./images/about1.jpg" alt="" class="img-fluid">
+                            <img src="./images/about2.jpg" alt="" class="corner-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="./images/tree.png" alt="" class="section-bg-img">
+                        <h4>Lorem ipsum dolor sit amet</h4>
+                        <p>fefoifno oi43ngoi34oig3n vornornb bionoirenbre iobrenrb boirn</p>
+                        <p>fefoifno oi43ngoi34oig3n vornornb bionoirenbre iobrenrb boirn</p>
+                        <a href="" class="section-btn">Discover more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="row">
+                    <h1>Fawwaz & Aina</h1>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                        <div class="card">
+                            <div class="img-box">
+                                <img src="./images/card.jpg" alt="">
+                            </div>
+                            <div class="details">
+                                <h4>Pas Isley</h4>
+                                <p>fefoifno oi43ngoi34oig3n vornornb bionoirenbre iobrenrb boirn</p>
+                                <a href="#" class="section-btn">Discover more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                        <div class="card">
+                            <div class="img-box">
+                                <img src="./images/card.jpg" alt="">
+                            </div>
+                            <div class="details">
+                                <h4>Kemaskini Padu</h4>
+                                <p>fefoifno oi43ngoi34oig3n vornornb bionoirenbre iobrenrb boirn</p>
+                                <a href="#" class="section-btn">Discover more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                        <div class="card">
+                            <div class="img-box">
+                                <img src="./images/card.jpg" alt="">
+                            </div>
+                            <div class="details">
+                                <h4>Boikot kk Mart</h4>
+                                <p>fefoifno oi43ngoi34oig3n vornornb bionoirenbre iobrenrb boirn</p>
+                                <a href="#" class="section-btn">Discover more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="location" id="location">
+            <div class="container">
+                <div class="row">
+                    <h1>Lokasi Kenduri Kahwin</h1>
+                </div>
+                <!-- Google Map -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.970152809532!2d101.2264126746265!3d4.226079995747799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cb05817d06ab99%3A0xa0fb2be2f9446b7d!2sZairul%20Fuaad%20Bin%20Zakaria!5e0!3m2!1sen!2smy!4v1711178747078!5m2!1sen!2smy"
+                    width="100%" height="600px" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <div class="info">
+                        <div class="address">
+                            <ion-icon name="pin"></ion-icon>
+                            <h4>Lokasi</h4>
+                            <p>Lot 1595, Lorong Muhibbah 16, Kampung Tersusun Muhibbah Batu 33, 35350 Temoh, Perak</p>
+                        </div>
+                        <div class="email">
+                            <ion-icon name="mail"></ion-icon>
+                            <h4>Email</h4>
+                            <p>mfawwaz97@gmail.com</p>
+                        </div>
+                        <div class="phone">
+                            <ion-icon name="call"></ion-icon>
+                            <h4>Phone No.</h4>
+                            <p>+60135839782</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section-->
+        <section class="rsvp" id="rsvp">
+            <div class="container">
+                <div class="row">
+                    <h1>Ucapan</h1>
+                    <!-- Content -->
+                    <div class="box-message">
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum finibus
+                            purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                        <div class="element">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit in tincidunt vehicula. Nam fermentum
+                                finibus
+                                purus, id vulputate nibh rhoncus vel.</p>
+                            <p class="m-name">Anonymous</p>
+                        </div>
+                    </div>
+                    <form action="/" method="POST">
+                        <div class="field-message">
+                            <h1>Berikan Ucapan Anda</h1>
+                            <label for="name">Nama:</label>
+                            <input type="text" name="name" id="name" required>
+                            <p>Jika anda mahu kekalkan identity anda, <span>Tekan sini</span></p>
+
+                            <label for="ucapan">Ucapan Anda:</label>
+                            <textarea name="message" id="message" cols="10" rows="10" required></textarea>
+                            <div class="button">
+                                <button type="submit">Confirm</button>
+                            </div>
+                        </div>
+                    </form>
+                <!-- End Content -->
+                </div>
+            </div>
+        </section>
+
+        <section class="kedatangan" id="kedatangan">
+            <div class="container">
+                <div class="row">
+                    <h1>Kedatangan</h1>
+                    <div class="form-kehadiran">
+                        <p>Kehadiran ini hanyalah untuk record bilangan tetamu yang hadir. Anda tidak perlu risau akan identiti anda</p>
+                        <form action="/" method="POST">
+                            <label for="hadir">
+                                <input type="radio" id="hadir" name="Kehadiran">
+                                Hadir
+                            </label>
+                            <label for="tidak-hadir">
+                                <input type="radio" id="tidak-hadir" name="Kehadiran">
+                                Tidak hadir
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main End -->
+
+    <!-- Javascript Vendors -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom Javascript -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
