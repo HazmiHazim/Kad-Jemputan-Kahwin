@@ -41,6 +41,7 @@ const sectionNavigator = name => {
 
 
 // Navigation to sections
+/*
 window.addEventListener('load', () => {
     const navList = document.querySelectorAll('.nav-btn');
     navList.forEach(nav => {
@@ -52,6 +53,40 @@ window.addEventListener('load', () => {
             this.classList.add('active');
             sectionNavigator(this.getAttribute('data-target'));
             screen.width < 768 && toggleMenu();
+        });
+    });
+    
+});
+*/
+
+// Navigation to sections for both desktop and mobile
+window.addEventListener('load', () => {
+    const navList = document.querySelectorAll('.nav-btn');
+    const navMobileList = document.querySelectorAll('.nav-mobile a');
+
+    // Function to handle navigation for both desktop and mobile
+    const handleNavigation = (target) => {
+        navList.forEach(el => {
+            el.classList.remove('active');
+        });
+        target.classList.add('active');
+        sectionNavigator(target.getAttribute('data-target'));
+        screen.width < 768 && toggleMenu();
+    };
+
+    // Add event listeners for desktop navigation
+    navList.forEach(nav => {
+        nav.addEventListener('click', function (e) {
+            e.preventDefault();
+            handleNavigation(this);
+        });
+    });
+
+    // Add event listeners for mobile navigation
+    navMobileList.forEach(navMobile => {
+        navMobile.addEventListener('click', function (e) {
+            e.preventDefault();
+            handleNavigation(this);
         });
     });
 });
