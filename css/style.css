@@ -261,6 +261,15 @@ header.active {
     font-size: 2.5em;
 }
 
+.banner .content .tarikh p {
+    margin-bottom: 5px;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9em;
+    color: #111111;
+    text-align: center;
+    font-weight: 700;
+}
+
 .bg-slide {
     position: absolute;
     top: 0;
@@ -349,12 +358,12 @@ header.active {
     height: 70vw;
 }
 
-circle.small {
+.circle.small {
     width: 35vw;
     height: 35vw;
 }
 
-circle img {
+.circle img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -937,11 +946,11 @@ section p {
 
 .rsvp .button button {
     border: none;
-    width: 20%;
+    width: 100px;
     border-radius: 5px;
     background: blueviolet;
     color: #F8F4FF;
-    padding: 4px 6px;
+    padding: 8px;
     font-size: 0.9em;
     cursor: pointer;
 }
@@ -1006,6 +1015,26 @@ section p {
     cursor: pointer;
 }
 
+.kedatangan .kehadiran-btn {
+    width: 100%;
+    height: 100%;
+}
+
+.kedatangan .kehadiran-btn button {
+    cursor: pointer;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 5px;
+    color: #F8F4FF;
+    padding: 8px;
+    width: 100px;
+}
+
+.kedatangan .kehadiran-btn button:hover {
+    background-color: blueviolet;
+    opacity: 0.9;
+}
+
 /*============================================================================================
 # Responsive Design
 ============================================================================================*/
@@ -1032,7 +1061,7 @@ section p {
     }
 
     .banner .content .intro {
-        font-size: 0.6em;
+        font-size: 0.8em;
     }
 
     .bg-slide .content {
@@ -1125,6 +1154,14 @@ section p {
 
     .about h4 {
         margin-top: 50px;
+    }
+
+    .about::before {
+        top: 300px;
+    }
+
+    .services::before {
+        top: 300px;
     }
 
     .section-bg-img {
