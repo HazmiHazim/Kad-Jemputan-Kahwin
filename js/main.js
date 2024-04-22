@@ -1,168 +1,195 @@
-// Toggle background active
-const slideNavigator = name => {
-    let slides = document.querySelectorAll('.bg-slide');
-    slides.forEach(slide => {
-        slide.classList.remove('active');
-        if (slide.classList.contains(name)) {
-            slide.classList.add('active');
-        }
-    });
-};
+/** =====================================================
+ *  Timer Countdown
+  ======================================================= */
 
+function setupCountdown(campaignSelector, startTimeMillis, endTimeMillis) {
+    var second = 1000;
+    var minute = second * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
 
-// Switch background
-window.addEventListener('load', () => {
-    const slideBtnList = document.querySelectorAll('.slide-btn');
-    slideBtnList.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            slideBtnList.forEach(el => {
-                el.classList.remove('active');
-            });
-            this.classList.add('active');
-            slideNavigator(this.getAttribute('data-target'));
-        });
-    });
-});
-
-
-// Activate sections
-const sectionNavigator = name => {
-    let sections = document.querySelectorAll('section');
-    let header = document.querySelector('header');
-    sections.forEach(section => {
-        section.classList.remove('section-show');
-        if (section.classList.contains(name)) {
-            section.classList.add('section-show');
-            header.classList.add('active');
-        }
-    });
-};
-
-
-// Navigation to sections
-/*
-window.addEventListener('load', () => {
-    const navList = document.querySelectorAll('.nav-btn');
-    navList.forEach(nav => {
-        nav.addEventListener('click', function (e) {
-            e.preventDefault();
-            navList.forEach(el => {
-                el.classList.remove('active');
-            });
-            this.classList.add('active');
-            sectionNavigator(this.getAttribute('data-target'));
-            screen.width < 768 && toggleMenu();
-        });
-    });
-    
-});
-*/
-
-// Navigation to sections for both desktop and mobile
-window.addEventListener('load', () => {
-    const navList = document.querySelectorAll('.nav-btn');
-    const navMobileList = document.querySelectorAll('.nav-mobile a');
-
-    // Function to handle navigation for both desktop and mobile
-    const handleNavigation = (target) => {
-        navList.forEach(el => {
-            el.classList.remove('active');
-        });
-        target.classList.add('active');
-        sectionNavigator(target.getAttribute('data-target'));
-        screen.width < 768 && toggleMenu();
-    };
-
-    // Add event listeners for desktop navigation
-    navList.forEach(nav => {
-        nav.addEventListener('click', function (e) {
-            e.preventDefault();
-            handleNavigation(this);
-        });
-    });
-
-    // Add event listeners for mobile navigation
-    navMobileList.forEach(navMobile => {
-        navMobile.addEventListener('click', function (e) {
-            e.preventDefault();
-            handleNavigation(this);
-        });
-    });
-});
-
-
-// Reset header to initial state
-const resetHeader = () => {
-    let header = document.querySelector('header');
-    header.classList.remove('active');
-};
-
-
-// Initial navigation
-const initNavigation = () => {
-    const navList = document.querySelectorAll('.nav-btn');
-    navList.forEach(el => {
-        el.classList.remove('active');
-        if (el.getAttribute('data-target') === 'about') {
-            el.classList.add('active');
-        }
-    });
-    sectionNavigator('about');
-};
-
-
-// Toggle menu
-const toggleMenu = () => {
-    const menu = document.querySelector('.menu');
-    const navMobile = document.querySelector('.nav-mobile');
-    menu.classList.toggle('active');
-    navMobile.classList.toggle('active');
-};
-
-
-
-/** Countdown Timer */
-(function () {
-    const second = 1000,
-        minute = second * 60,
-        hour = minute * 60,
-        day = hour * 24;
-
-    //I'm adding this section so I don't have to keep updating this pen every year :-)
-    //remove this if you don't need it
-    let today = new Date(),
-        dd = String(today.getDate()).padStart(2, "0"),
-        mm = String(today.getMonth() + 1).padStart(2, "0"),
-        yyyy = today.getFullYear(),
-        nextYear = yyyy + 1,
-        dayMonth = "06/14/",
-        birthday = dayMonth + yyyy;
-
-    today = mm + "/" + dd + "/" + yyyy;
-    if (today > birthday) {
-        birthday = dayMonth + nextYear;
+    function calculateRemaining() {
+        var now = new Date().getTime();
+        return now >= startTimeMillis && now < endTimeMillis ? endTimeMillis - now : 0;
     }
-    //end
 
-    const countDown = new Date(birthday).getTime(),
-        x = setInterval(function () {
+    var didRefresh = false;
+    var previousGap = calculateRemaining();
 
-            const now = new Date().getTime(),
-                distance = countDown - now;
+    function countdown() {
+        var gap = calculateRemaining();
+        var shouldRefresh = previousGap > day && gap <= day || previousGap > 0 && gap === 0;
 
-            document.getElementById("days").innerText = Math.floor(distance / (day)),
-                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+        previousGap = gap;
 
-            //do something later when date is reached
-            if (distance < 0) {
-                document.getElementById("headline").innerText = "It's my birthday!";
-                document.getElementById("countdown").style.display = "none";
-                document.getElementById("content").style.display = "block";
-                clearInterval(x);
-            }
-            //seconds
-        }, 0)
-}());
+        var textDay = Math.floor(gap / day);
+        var textHour = Math.floor((gap % day) / hour);
+        var textMinute = Math.floor((gap % hour) / minute);
+        var textSecond = Math.floor((gap % minute) / second);
+
+        if (document.querySelector(campaignSelector + ' .timer')) {
+            document.querySelector(campaignSelector + ' .day').innerText = textDay;
+            document.querySelector(campaignSelector + ' .hour').innerText = textHour;
+            document.querySelector(campaignSelector + ' .minute').innerText = textMinute;
+            document.querySelector(campaignSelector + ' .second').innerText = textSecond;
+        }
+
+        if (shouldRefresh && !didRefresh) {
+            didRefresh = true;
+            setTimeout(function () {
+                window.location.reload();
+            }, 30000 + Math.random() * 90000);
+        }
+    }
+
+    countdown();
+    setInterval(countdown, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    if (!document.querySelectorAll || !document.body.classList) {
+        return;
+    }
+
+});
+
+setupCountdown(".campaign-0", 1704038400000, 1721448000000);
+
+/** =====================================================
+ *  Animation
+  ======================================================= */
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        } else {
+            reveals[i].classList.remove("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);
+
+
+
+
+/** =====================================================
+ *  Toggle Menu
+  ======================================================= */
+// ================================== Calendar ==================================
+// Get all buttons and their corresponding menus
+const toggleButtons = {
+    'calendar-btn': 'calendar-menu',
+    'location-btn': 'location-menu',
+    'music-btn': 'music-menu',
+    'rsvp-btn': 'rsvp-menu',
+    'ucapan-btn': 'ucapan-menu',
+    'contact-btn': 'contact-menu',
+    // Add other button-to-menu mappings here
+};
+
+// Function to toggle a menu open/close
+function toggleMenu(menuId, event) {
+    event.stopPropagation(); // Prevent click from propagating
+    const menu = document.getElementById(menuId);
+
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    } else {
+        // Close all other menus first
+        closeAllMenus();
+        menu.classList.add('open'); // Open the menu
+    }
+}
+
+// Function to close all menus
+function closeAllMenus() {
+    for (const menuId of Object.values(toggleButtons)) {
+        const menu = document.getElementById(menuId);
+        if (menu.classList.contains('open')) {
+            menu.classList.remove('open'); // Close the menu
+        }
+    }
+}
+
+// Add click event listeners to all toggle buttons
+for (const [buttonId, menuId] of Object.entries(toggleButtons)) {
+    const button = document.getElementById(buttonId);
+    button.addEventListener('click', (event) => toggleMenu(menuId, event));
+}
+
+// Add a global click handler to close all menus when clicking outside
+document.addEventListener('click', () => closeAllMenus());
+
+// Prevent clicks within menus from closing them
+for (const menuId of Object.values(toggleButtons)) {
+    const menu = document.getElementById(menuId);
+    menu.addEventListener('click', (event) => event.stopPropagation());
+}
+
+
+
+
+/** =====================================================
+ *  Audio Player
+  ======================================================= */
+const audio = document.getElementById("audio");
+const playPause = document.querySelector(".play-pause");
+const seekbar = document.querySelector(".seekbar");
+const timeDisplay = document.querySelector(".time-display");
+const muteUnmute = document.querySelector(".mute-unmute");
+
+let isPlaying = false;
+let isMuted = false;
+
+playPause.addEventListener("click", () => {
+    if (isPlaying) {
+        audio.pause();
+        playPause.textContent = "\u25B6"; // Play symbol
+    } else {
+        audio.play();
+        playPause.textContent = "\u275A\u275A"; // Pause symbol
+    }
+    isPlaying = !isPlaying;
+});
+
+muteUnmute.addEventListener("click", () => {
+    if (isMuted) {
+        audio.muted = false;
+        muteUnmute.textContent = "\u128266"; // Unmute symbol
+    } else {
+        audio.muted = true;
+        muteUnmute.textContent = "\u1F507"; // Mute symbol
+    }
+    isMuted = !isMuted;
+});
+
+audio.addEventListener("timeupdate", () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    const percentage = (currentTime / duration) * 100;
+    seekbar.value = percentage;
+
+    const minutes = Math.floor(currentTime / 60);
+    const seconds = Math.floor(currentTime % 60);
+    timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+});
+
+seekbar.addEventListener("input", (e) => {
+    const percentage = e.target.value;
+    const duration = audio.duration;
+    audio.currentTime = (percentage / 100) * duration;
+});
+
+audio.addEventListener("loadedmetadata", () => {
+    const duration = audio.duration;
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration % 60);
+    timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+});
