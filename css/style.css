@@ -106,7 +106,7 @@ section {
     # Intro
 ============================================================================================*/
 .card section.intro {
-    background: url(../images/intro2-bg.png);
+    background: url(../images/intro-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
