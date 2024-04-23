@@ -106,18 +106,16 @@ section {
     # Intro
 ============================================================================================*/
 .card section.intro {
-    background: url(../images/test3.png);
+    background: url(../images/intro-bg.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background-size: contain;
+    background-position: top;
+    height: 588px;
 }
 
 .card section.intro .content {
     display: block;
-    padding: 200px 0;
+    padding: 100px 0px;
     text-align: center;
 }
 
@@ -197,6 +195,11 @@ section {
     align-items: center;
     justify-content: center;
     gap: 3px;
+}
+
+.card section.info .event-info .three,
+.card section.info .event-info .four {
+    margin-bottom: 15px;
 }
 
 .card section.info .event-info .one p,
@@ -575,7 +578,7 @@ section {
     align-items: center;
     justify-content: center;
     padding: 16px;
-    width: 30%;
+    width: 50%;
     border-radius: 100px;
     border: none;
     background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important;
