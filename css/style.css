@@ -233,7 +233,7 @@ section {
     background-position: center;
     min-height: 100vh;
     z-index: 500;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
 }
 
 .card section.intro .content {
