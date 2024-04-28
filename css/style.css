@@ -209,7 +209,7 @@ body {
     max-width: 420px;
     margin: 0 auto;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    background: #F8F4FF;
+    background: white;
     border-radius: 3px;
     font-size: 14px;
     line-height: 16px;
@@ -291,7 +291,7 @@ section {
     justify-content: center;
     gap: 10px;
     padding: 50px 0px;
-    background-image: linear-gradient(to right, #dee4ea, #f9fcff, #dee4ea);
+    background-image: linear-gradient(to right, #F8F4FF, #f9fcff, #F8F4FF);
     min-height: 100vh;
 }
 
