@@ -902,6 +902,15 @@ section {
     justify-content: space-between;
 }
 
+.toggle-menu .contact .content .person button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .toggle-menu .contact .content .person .first-section {
     display: flex;
     gap: 5px;
@@ -910,7 +919,7 @@ section {
 }
 
 .toggle-menu .contact .content .person .first-section .bx {
-    font-size: 20px;
+    font-size: 30px;
     color: darkcyan;
 }
 
@@ -927,8 +936,7 @@ section {
 
 .toggle-menu .contact .content .person .second-section .bx {
     color: #F8F4FF;
-    cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .toggle-menu .ucapan-tetamu form {
