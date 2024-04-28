@@ -1083,14 +1083,16 @@ section {
     outline: none;
 }
 
-.toggle-menu .ucapan-tetamu form .button {
+.toggle-menu .ucapan-tetamu .button {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 10px;
+    margin-top: 20px;
 }
 
-.toggle-menu .ucapan-tetamu form .button button {
+.toggle-menu .ucapan-tetamu .button button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1103,12 +1105,12 @@ section {
     gap: 5px;
 }
 
-.toggle-menu .ucapan-tetamu form .button button:hover {
+.toggle-menu .ucapan-tetamu .button button:hover {
     background: #F8F4FF;
     opacity: 0.9;
 }
 
-.toggle-menu .ucapan-tetamu form .button button .bx {
+.toggle-menu .ucapan-tetamu .button button .bx {
     font-size: 16px;
 }
 
