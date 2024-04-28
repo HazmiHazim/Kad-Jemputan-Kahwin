@@ -254,9 +254,25 @@ section {
     letter-spacing: 1px;
 }
 
-.card section.info .event-info .two {
+.card section.info .event-info .one .parent {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
+    gap: 5px;
+}
+
+.card section.info .event-info .one .parent p {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card section.info .event-info .two {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 5px;
 }
 
 .card section.info .event-info .two p {
