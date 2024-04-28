@@ -13,6 +13,7 @@
 
 <body>
     <div class="card">
+        <div class="petal-container"></div>
         <!-- Intro Section -->
         <section class="intro">
             <div class="content">
@@ -218,11 +219,11 @@
                 <span>14 Muharram 1446H</span>
             </p>
             <div class="button">
-                <button class="google">
+                <button class="google" onclick="addGoogleCalendar()">
                     <i class='bx bxl-google'></i>
                     <span>Add to Calendar</span>
                 </button>
-                <button class="apple">
+                <button class="apple" onclick="addAppleCalendar()">
                     <i class='bx bxl-apple'></i>
                     <span>Add to Calendar</span>
                 </button>
@@ -236,12 +237,12 @@
             <p>1595 Lorong Muhibbah 16</p>
             <p>Kampung Tersusun Muhibbah Batu 33</p>
             <p>35350 Temoh, Perak</p>
-            <div class="button">
+            <div class="button" onclick="openGoogleMaps()">
                 <button class="google">
                     <i class='bx bxl-google'></i>
                     <span>Maps</span>
                 </button>
-                <button class="apple">
+                <button class="waze" onclick="openWaze()">
                     <i class="fa-brands fa-waze"></i>
                     <span>Waze</span>
                 </button>
@@ -252,13 +253,11 @@
     <div id="music-menu" class="toggle-menu">
         <div class="music">
             <h1>Lagu</h1>
-            <div class="audio-player">
-                <span class="icon play-pause">&#9658;</span>
-                <input type="range" min="0" max="100" value="0" class="seekbar">
-                <span class="time-display">0:00</span>
-                <span class="icon mute-unmute">&#128266;</span>
-            </div>
-            <audio id="audio" src="your-audio-file.mp3"></audio>
+            <p>Beautiful in White x Canon in D</p>
+            <p>(Piano Cover by Riyandi Kusuma)</p>
+            <audio id="audio-player" controls autoplay loop>
+                <source type="audio/mp3" src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3">
+            </audio>
         </div>
     </div>
 
@@ -343,6 +342,7 @@
 
     <!-- Js Vendor -->
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/1.18.11/tsparticles.min.js"> </script>
 
     <!-- Custom Js -->
     <script src="./js/main.js"></script>

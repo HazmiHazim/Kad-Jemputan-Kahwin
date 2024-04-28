@@ -72,13 +72,49 @@ body {
     }
 }
 
-
-
 .divider {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 50%;
     height: 20px;
+}
+
+/*============================================================================================
+    # Background Animation
+============================================================================================*/
+.petal-container {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    /* Full width within the card */
+    height: 100%;
+    /* Full height within the card */
+    top: 0;
+    left: 0;
+}
+
+.petal {
+    position: absolute;
+    left: -10px;
+    /* Start just off the left edge of the card */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    border-radius: 50%;
+    /* Rounded shape */
+    opacity: 0.5;
+    animation: fall 60s linear;
+    /* Animation duration */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        /* Initial state */
+    }
+
+    100% {
+        transform: translateX(var(--translate-x)) translateY(var(--translate-y)) rotate(720deg);
+        /* Diagonal path with variable translation */
+    }
 }
 
 
@@ -91,10 +127,11 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     background: white;
     border-radius: 3px;
-    padding-bottom: 30px;
     font-size: 14px;
     line-height: 16px;
     font-family: "Roboto", sans-serif;
+    position: relative;
+    overflow: hidden;
 }
 
 section {
@@ -111,6 +148,7 @@ section {
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    z-index: 500;
 }
 
 .card section.intro .content {
@@ -177,11 +215,15 @@ section {
     width: 80%;
     height: 30%;
     object-fit: cover;
+    position: relative;
+    z-index: 500;
 }
 
 .card section.info .event-info {
     width: 75%;
     text-align: center;
+    position: relative;
+    z-index: 500;
 }
 
 .card section.info .event-info p {
@@ -408,6 +450,7 @@ section {
 
 .card section.info .countdown .container {
     width: 100%;
+    z-index: 500;
 }
 
 
@@ -419,6 +462,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    z-index: 500;
+    position: relative;
 }
 
 .card section.info .aturcara p {
@@ -461,6 +506,7 @@ section {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
+    z-index: 500;
 }
 
 .card section.info .ucapan .content {
@@ -489,6 +535,18 @@ section {
 /*============================================================================================
     # RSVP
 ============================================================================================*/
+.card section.info .rsvp {
+    position: relative;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    z-index: 500;
+}
+
 .card section.info .rsvp h2 {
     text-transform: uppercase;
     color: #111111;
@@ -780,6 +838,22 @@ section {
     margin-right: 5px;
 }
 
+#music-menu {
+    padding: 20px 6px;
+}
+
+.toggle-menu .music p {
+    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    color: wheat;
+    text-align: center;
+}
+
+#audio-player {
+    margin-top: 20px;
+    width: 100%;
+}
+
 .toggle-menu .rsvp .button {
     display: flex;
     align-items: center;
@@ -915,63 +989,6 @@ section {
 .toggle-menu .ucapan-tetamu form .button button .bx {
     font-size: 16px;
 }
-
-/*============================================================================================
-    # Music Player
-============================================================================================*/
-.audio-player {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    background: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-}
-
-.seekbar {
-    flex-grow: 1;
-    appearance: none;
-    height: 10px;
-    background: #d3d3d3;
-    outline: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-}
-
-.seekbar::-webkit-slider-thumb {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: #4CAF50;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.seekbar:hover {
-    background: #ccc;
-}
-
-.seekbar::-webkit-slider-thumb:hover {
-    background: #3e8e41;
-}
-
-.time-display {
-    width: 50px;
-    text-align: right;
-    font-size: 14px;
-}
-
-.icon {
-    cursor: pointer;
-    font-size: 20px;
-}
-
-
-
-
 
 /*============================================================================================
     # Responsive Design

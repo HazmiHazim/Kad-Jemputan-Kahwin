@@ -55,6 +55,102 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 setupCountdown(".campaign-0", 1704038400000, 1721448000000);
 
+
+
+
+
+/** =====================================================
+ *  Add to Calendar
+  ======================================================= */
+const event = {
+    title: "Jemputan Kenduri Kahwin Fawwaz & Aina",
+    startDate: "20240720T033000Z", // YYYYMMDDTHHmmssZ (UTC)
+    endDate: "20240720T090000Z",
+    location: "1595 Lorong Muhibbah 16, Kampung Tersusun Muhibbah Batu 33, Temoh Perak, Malaysia",
+    description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
+};
+
+// Function to generate Google Calendar URL
+function generateGoogleCalendarLink(event) {
+    const { title, startDate, endDate, location, description } = event;
+
+    const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+    const params = new URLSearchParams({
+        text: title,
+        dates: `${startDate}/${endDate}`,
+        details: description,
+        location: location,
+    });
+
+    return `${baseUrl}&${params.toString()}`;
+}
+
+// Function to generate ICS file content
+function generateICS(event) {
+    const { title, startDate, endDate, location, description } = event;
+
+    return `
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:${title}
+DTSTART:${startDate}
+DTEND:${endDate}
+LOCATION:${location}
+DESCRIPTION:${description}
+END:VEVENT
+END:VCALENDAR
+    `.trim();
+}
+
+// Function to download an ICS file
+function downloadICS(filename, content) {
+    const blob = new Blob([content], { type: "text/calendar" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Handler for Google Calendar button
+function addGoogleCalendar() {
+    const googleLink = generateGoogleCalendarLink(event);
+    window.open(googleLink, "_blank");
+}
+
+// Handler for Apple Calendar button
+function addAppleCalendar() {
+    const icsContent = generateICS(event);
+    downloadICS("event.ics", icsContent);
+}
+
+
+
+
+
+/** =====================================================
+ *  Location for Google and Waze
+  ======================================================= */
+function openGoogleMaps() {
+    const latitude = 4.226058186123785;  // Example latitude
+    const longitude = 101.22905188341969;  // Example longitude
+    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+    window.open(googleMapsUrl, "_blank");  // Open in a new tab
+}
+
+function openWaze() {
+    const latitude = 4.226058186123785;  // Example latitude
+    const longitude = 101.22905188341969;  // Example longitude
+    const wazeUrl = `waze://?ll=${latitude},${longitude}&navigate=yes`;
+
+    window.open(wazeUrl, "_blank");  // Open in a new tab
+}
+
+
+
 /** =====================================================
  *  Animation
   ======================================================= */
@@ -75,6 +171,56 @@ function reveal() {
 }
 
 window.addEventListener("scroll", reveal);
+
+
+
+
+
+/** =====================================================
+ *  Background Animation
+  ======================================================= */
+const petalContainer = document.querySelector('.petal-container');
+
+const maxPetals = 70; // Maximum number of petals allowed at once
+const petalInterval = 100; // Interval for creating petals (100 milliseconds)
+
+function createPetal() {
+    if (petalContainer.childElementCount < maxPetals) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+
+        const startY = Math.random() * 100; // Randomized vertical start position
+        const duration = 4 + Math.random() * 2; // Randomized animation duration (4 to 6 seconds)
+
+        const petalSize = 5 + Math.random() * 10; // Random size between 5px and 20px
+
+        // Randomize the opacity between 0.3 and 0.8 for varied transparency
+        const petalOpacity = 0.3 + Math.random() * 0.6; // Randomized opacity
+
+        petal.style.top = `${startY}%`; // Randomized starting vertical position
+        petal.style.width = `${petalSize}px`;
+        petal.style.height = `${petalSize}px`;
+        petal.style.opacity = petalOpacity; // Set the random opacity
+        petal.style.animationDuration = `${duration}s`; // Randomized animation duration
+
+        // Randomize the final translation for X and Y for varied movement
+        const translateX = 300 + Math.random() * 120; // TranslateX with some randomness
+        const translateY = 300 + Math.random() * 120; // TranslateY with some randomness
+
+        petal.style.setProperty('--translate-x', `${translateX}px`); // Set variable for translation X
+        petal.style.setProperty('--translate-y', `${translateY}px`); // Set variable for translation Y
+
+        petalContainer.appendChild(petal);
+
+        // Ensure the petal is removed only after the animation completes
+        setTimeout(() => {
+            petalContainer.removeChild(petal);
+        }, duration * 1000); // Convert duration to milliseconds
+    }
+}
+
+// Create petals at a shorter interval with the defined interval time
+setInterval(createPetal, petalInterval); // Create petals every 100 milliseconds
 
 
 
@@ -137,59 +283,5 @@ for (const menuId of Object.values(toggleButtons)) {
 
 
 /** =====================================================
- *  Audio Player
+ *  Audio Autoplay
   ======================================================= */
-const audio = document.getElementById("audio");
-const playPause = document.querySelector(".play-pause");
-const seekbar = document.querySelector(".seekbar");
-const timeDisplay = document.querySelector(".time-display");
-const muteUnmute = document.querySelector(".mute-unmute");
-
-let isPlaying = false;
-let isMuted = false;
-
-playPause.addEventListener("click", () => {
-    if (isPlaying) {
-        audio.pause();
-        playPause.textContent = "\u25B6"; // Play symbol
-    } else {
-        audio.play();
-        playPause.textContent = "\u275A\u275A"; // Pause symbol
-    }
-    isPlaying = !isPlaying;
-});
-
-muteUnmute.addEventListener("click", () => {
-    if (isMuted) {
-        audio.muted = false;
-        muteUnmute.textContent = "\u128266"; // Unmute symbol
-    } else {
-        audio.muted = true;
-        muteUnmute.textContent = "\u1F507"; // Mute symbol
-    }
-    isMuted = !isMuted;
-});
-
-audio.addEventListener("timeupdate", () => {
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const percentage = (currentTime / duration) * 100;
-    seekbar.value = percentage;
-
-    const minutes = Math.floor(currentTime / 60);
-    const seconds = Math.floor(currentTime % 60);
-    timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-});
-
-seekbar.addEventListener("input", (e) => {
-    const percentage = e.target.value;
-    const duration = audio.duration;
-    audio.currentTime = (percentage / 100) * duration;
-});
-
-audio.addEventListener("loadedmetadata", () => {
-    const duration = audio.duration;
-    const minutes = Math.floor(duration / 60);
-    const seconds = Math.floor(duration % 60);
-    timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-});
