@@ -124,19 +124,19 @@ body {
 }
 
 .fade-top-1 {
-    animation: growth 0.5s ease-in;
+    animation: growth 0.5s ease-in-out;
 }
 
 .fade-top-2 {
-    animation: growth 0.8s ease-in;
+    animation: growth 0.8s ease-in-out;
 }
 
 .fade-top-3 {
-    animation: growth 1s ease-in;
+    animation: growth 1s ease-in-out;
 }
 
 .fade-top-4 {
-    animation: growth 1.2s ease-in;
+    animation: growth 1.2s ease-in-out;
 }
 
 @keyframes growth {
@@ -1023,10 +1023,24 @@ section {
     color: darkcyan;
 }
 
-.toggle-menu .contact .content .person .first-section span {
+.toggle-menu .contact .content .person .first-section .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.toggle-menu .contact .content .person .first-section .name span {
     font-size: 16px;
     font-family: 'Cormorant Garamond', serif;
     color: #F8F4FF;
+    font-weight: 700;
+}
+
+.toggle-menu .contact .content .person .first-section .name span:nth-child(2) {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 12;
+    color: lightgray;
 }
 
 .toggle-menu .contact .content .person .second-section {
