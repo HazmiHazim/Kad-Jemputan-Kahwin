@@ -174,7 +174,7 @@ function addAppleCalendar() {
 function openGoogleMaps() {
     const latitude = 4.226058186123785;  // Example latitude
     const longitude = 101.22905188341969;  // Example longitude
-    const googleMapsUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=driving`;
 
     window.open(googleMapsUrl, "_blank");  // Open in a new tab
 }
@@ -337,6 +337,23 @@ document.addEventListener('click', () => closeAllMenus());
 for (const menuId of Object.values(toggleButtons)) {
     const menu = document.getElementById(menuId);
     menu.addEventListener('click', (event) => event.stopPropagation());
+}
+
+// Function to close a specific menu
+function closeMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open'); // Close the menu
+    }
+}
+
+// Add event listener for the close button inside the ucapan menu
+const closeButton = document.querySelector('#ucapan-menu .tutup');
+if (closeButton) {
+    closeButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent this from propagating and triggering other closures
+        closeMenu('ucapan-menu'); // Close the specific menu
+    });
 }
 
 
