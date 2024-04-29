@@ -157,7 +157,7 @@ body {
 
 .divider {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 50%;
     height: 20px;
 }
@@ -652,20 +652,7 @@ section {
     text-transform: uppercase;
     color: #111111;
     text-align: center;
-}
-
-.card section.info .rsvp .container-divider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-}
-
-.card section.info .rsvp .container-divider img {
-    width: 80%;
-    height: 50px;
+    margin-bottom: 30px;
 }
 
 .card section.info .rsvp .container-message {
@@ -729,24 +716,30 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    gap: 5px;
 }
 
 .card section.info .rsvp .beri-ucapan-button button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 16px;
-    width: 50%;
-    border-radius: 100px;
-    border: none;
-    background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important;
+    padding: 16px 0px;
+    width: 45%;
+    border-radius: 10px;
+    border: 1px solid grey;
+    /* background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important; */
+    /* background: linear-gradient(to right, #24243e, #302b63, #0f0c29); */
+    background: #F8F4FF;
     cursor: pointer;
     gap: 10px;
 }
 
 .card section.info .rsvp .beri-ucapan-button button:hover {
-    background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important;
+    /* background: linear-gradient(90deg, #E5BDF6, #D8DEDE) !important; */
+    /* background: linear-gradient(to right, #24243e, #302b63, #0f0c29); */
+    background: #F8F4FF;
     opacity: 0.8;
 }
 
@@ -756,8 +749,8 @@ section {
 }
 
 .card section.info .rsvp .beri-ucapan-button button span {
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 
