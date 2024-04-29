@@ -182,7 +182,8 @@ function openGoogleMaps() {
 function openWaze() {
     const latitude = 4.226058186123785;  // Example latitude
     const longitude = 101.22905188341969;  // Example longitude
-    const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
+    //const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
+    const wazeUrl = `waze://?ll=${latitude},${longitude}&navigate=yes`
 
     window.open(wazeUrl, "_blank");  // Open in a new tab
 }
