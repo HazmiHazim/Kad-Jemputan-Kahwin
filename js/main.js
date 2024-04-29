@@ -298,6 +298,7 @@ const toggleButtons = {
     'rsvp-btn': 'rsvp-menu',
     'ucapan-btn': 'ucapan-menu',
     'contact-btn': 'contact-menu',
+    'kehadiran-btn': 'rsvp-menu'
     // Add other button-to-menu mappings here
 };
 
@@ -356,6 +357,10 @@ if (closeButton) {
         closeMenu('ucapan-menu'); // Close the specific menu
     });
 }
+
+// Function to open RSVP
+const kehadiranBtn = document.getElementById("kehadiran-btn");
+
 
 
 
