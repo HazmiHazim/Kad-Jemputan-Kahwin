@@ -256,7 +256,7 @@ function createPetal() {
         const petalSize = 5 + Math.random() * 10; // Random size between 5px and 20px
 
         // Randomize the opacity between 0.3 and 0.8 for varied transparency
-        const petalOpacity = 0.3 + Math.random() * 0.6; // Randomized opacity
+        const petalOpacity = 0.3 + Math.random() * 0.5; // Randomized opacity
 
         petal.style.top = `${startY}%`; // Randomized starting vertical position
         petal.style.width = `${petalSize}px`;
