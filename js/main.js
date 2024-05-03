@@ -298,7 +298,8 @@ const toggleButtons = {
     'rsvp-btn': 'rsvp-menu',
     'ucapan-btn': 'ucapan-menu',
     'contact-btn': 'contact-menu',
-    'kehadiran-btn': 'rsvp-menu'
+    'kehadiran-btn': 'rsvp-menu',
+    'btn-hadir': 'success-menu'
     // Add other button-to-menu mappings here
 };
 
@@ -366,5 +367,94 @@ const kehadiranBtn = document.getElementById("kehadiran-btn");
 
 
 /** =====================================================
- *  Audio Autoplay
+ *  Handle Form
   ======================================================= */
+// function submitUcapan() {
+//     document.getElementById("form-ucapan").submit();
+// }
+document.getElementById("form-ucapan").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const form = document.getElementById("form-ucapan");
+    const formData = new FormData(form); // Collect the form data
+    const actionUrl = form.action; // Get the form's target URL
+
+    fetch(actionUrl, {
+        method: "POST", // Use the POST method to submit data
+        body: formData, // Attach the FormData object
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Process the response as text
+        } else {
+            throw new Error("Form submission failed"); // Handle errors
+        }
+    })
+    .then(result => {
+        // Display the success message in the success-menu
+        const successMenu = document.getElementById("success-menu");
+        successMenu.innerHTML = "<div class='success-message'><i class='bx bx-check'></i><p>Mesej anda berjaya dihantar!</p></div>";
+        successMenu.classList.add("open"); // Open the success menu
+
+        // Close the ucapan menu after successful submission
+        closeMenu('ucapan-menu');
+
+        // Optionally reset the form
+        form.reset();
+    })
+    .catch(error => {
+        console.error("Error:", error); // Log any errors
+    });
+});
+
+
+
+
+/** =====================================================
+ *  Handle Kehadiran Count
+  ======================================================= */
+function incrementCount(endpoint, successMessage, iconClass, closeMenuId) {
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'action=increment',
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Request failed");
+        }
+    })
+    .then(data => {
+        if (data.attend) {
+            // Display the success message
+            const successMenu = document.getElementById("success-menu");
+            successMenu.innerHTML = `<div class='success-message'><i class='${iconClass}'></i><p>${successMessage}</p></div>`;
+            successMenu.classList.add("open"); // Open the success menu
+
+            // Optionally close other menu
+            if (closeMenuId) {
+                closeMenu(closeMenuId); // Close the specified menu
+            }
+        } else {
+            console.error("Increment count error:", data.error);
+            alert("Terjadi kesilapan: " + data.error);
+        }
+    })
+    .catch(error => {
+        console.error("AJAX error:", error);
+        alert("Error processing the request.");
+    });
+}
+
+// Attach the click event to the "Hadir" and "Tidak Hadir" buttons
+document.getElementById("btn-hadir").onclick = function() {
+    incrementCount('count_hadir.php', "Kami menantikan kedatangan anda!", 'bx bxs-wink-smile', 'rsvp-menu'); // Success message and optionally close RSVP menu
+};
+
+document.getElementById("btn-tidak-hadir").onclick = function() {
+    incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu'); // Success message and optionally close RSVP menu
+};

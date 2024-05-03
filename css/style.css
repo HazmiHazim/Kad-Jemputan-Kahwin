@@ -335,7 +335,7 @@ section {
 .card section.info .event-info .five p {
     color: #111111;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: 1px;
 }
 
@@ -348,7 +348,7 @@ section {
 }
 
 .card section.info .event-info .one .parent p {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -357,22 +357,28 @@ section {
     flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
-    gap: 5px;
+    gap: 15px;
 }
 
 .card section.info .event-info .two p {
     font-family: "Playfair Display", serif;
     color: darkcyan;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .card section.info .event-info .three .title,
 .card section.info .event-info .four .title,
 .card section.info .event-info .five .title {
-    font-size: 16px;
+    margin-top: 30px;
+}
+
+.card section.info .event-info .three .title,
+.card section.info .event-info .four .title,
+.card section.info .event-info .five .title {
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 
@@ -579,7 +585,16 @@ section {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.card section.info .aturcara .one,
+.card section.info .aturcara .two,
+.card section.info .aturcara .three,
+.card section.info .aturcara .four {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .card section.info .aturcara .one p,
@@ -588,8 +603,15 @@ section {
 .card section.info .aturcara .four p {
     color: #111111;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 16px;
     letter-spacing: 1px;
+}
+
+.card section.info .aturcara .one p:nth-child(2),
+.card section.info .aturcara .two p:nth-child(2),
+.card section.info .aturcara .three p:nth-child(2),
+.card section.info .aturcara .four p:nth-child(2) {
+    color: darkgrey;
 }
 
 
@@ -638,7 +660,7 @@ section {
 ============================================================================================*/
 .card section.info .rsvp {
     position: relative;
-    max-width: 420px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -656,13 +678,19 @@ section {
 }
 
 .card section.info .rsvp .container-message {
-    width: 100%;
-    height: 550px;
+    width: 95%;
+    height: 450px;
     overflow-y: auto;
-    padding: 16px;
+    padding: 0px 16px;
+    border-top: 1px solid wheat;
+    border-bottom: 1px solid wheat;
 }
 
 .card section.info .rsvp .container-message .content {
+    overflow: hidden;
+    width: 100%;
+    white-space: normal;
+    text-overflow: ellipsis;
     border-bottom: 1px solid #DDDDDD;
 }
 
@@ -675,7 +703,7 @@ section {
 
 .card section.info .rsvp .container-message .content p.name {
     color: darkcyan;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 .card section.info .rsvp .container-message .content p.name::before {
@@ -696,6 +724,20 @@ section {
     color: darkgrey;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.card section.info .rsvp .container-message .content-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card section.info .rsvp .container-message .content-empty p.empty-message {
+    color: darkgray;
+    text-align: center;
 }
 
 
@@ -745,7 +787,7 @@ section {
 
 .card section.info .rsvp .beri-ucapan-button button .bx {
     font-size: 16px;
-    color: black;
+    color: darkcyan;
 }
 
 .card section.info .rsvp .beri-ucapan-button button span {
@@ -975,8 +1017,16 @@ section {
     opacity: 0.9;
 }
 
-.toggle-menu .rsvp .button button .bx {
-    font-size: 16px;
+.toggle-menu .rsvp .button button i {
+    font-size: 28px;
+}
+
+.toggle-menu .rsvp .button #btn-hadir i {
+    color: green;
+}
+
+.toggle-menu .rsvp .button #btn-tidak-hadir i {
+    color: red;
 }
 
 .toggle-menu .contact .content {
@@ -1108,6 +1158,32 @@ section {
 .toggle-menu .ucapan-tetamu .button button .bx {
     font-size: 16px;
 }
+
+.toggle-menu .success-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 16px 20px 16px;
+    gap: 10px;
+}
+
+.toggle-menu .success-message i {
+    font-size: 64px;
+    color: greenyellow;
+}
+
+.toggle-menu .success-message .bx.bxs-sad {
+    color: grey;
+}
+
+.toggle-menu .success-message p {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    color: white;
+}
+
 
 /*============================================================================================
     # Responsive Design

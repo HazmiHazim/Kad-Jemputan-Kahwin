@@ -1,3 +1,55 @@
+<!-- Connect DB -->
+<?php
+$servername = "127.0.0.1:3307";
+$username = "root";
+$password = "";
+$database = "kad_kahwin";
+
+$connection = mysqli_connect($servername, $username, $password);
+
+if (!$connection) {
+    die("Connection Failed: " . mysqli_connect_error());
+}
+
+// Check if Database Not Exists Then Create The Database, But If Exists Then Proceed
+if (!mysqli_fetch_row(mysqli_query($connection, "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$database'"))) {
+    mysqli_query($connection, "CREATE DATABASE " . $database);
+}
+
+// New Connection If Database is Created
+$connection = mysqli_connect($servername, $username, $password, $database);
+
+$query1 = mysqli_query($connection, "SHOW TABLES LIKE 'ucapan_kahwin'");
+
+// Create Table if Does Not Exists
+if (mysqli_num_rows($query1) == 0) {
+    $table_ucapan = "CREATE TABLE `ucapan_kahwin` (
+    `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `nama_tetamu` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    `ucapan_tetamu` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+    mysqli_query($connection, $table_ucapan);
+}
+
+$query2 = mysqli_query($connection, "SHOW TABLES LIKE 'kehadiran'");
+
+// Create Table if Does Not Exists
+if (mysqli_num_rows($query2) == 0) {
+    $table_kehadiran = "CREATE TABLE `kehadiran` (
+    `id` bigint(20) UNSIGNED NOT NULL DEFAULT 1,
+    `jumlah_kehadiran` int UNSIGNED NOT NULL,
+    `jumlah_tidak_hadir` int UNSIGNED NOT NULL,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;";
+    mysqli_query($connection, $table_kehadiran);
+
+    // Insert Data
+    $seeder = "INSERT INTO kehadiran (id, jumlah_kehadiran, jumlah_tidak_hadir) VALUES (1, 0, 0)";
+    mysqli_query($connection, $seeder);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -150,62 +202,44 @@
             <div class="rsvp">
                 <h2 class="reveal fade-bottom">Ucapan</h2>
                 <div class="container-message reveal fade-bottom">
-                    <div class="content">
+                    <?php
+                    $query = mysqli_query($connection, "SELECT * FROM ucapan_kahwin");
+
+                    if ($query) {
+                        $hasData = false; // Flag to indicate if there is data
+
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $hasData = true;
+                            $id = $row["id"];
+                            $name = $row["nama_tetamu"];
+                            $message = $row["ucapan_tetamu"];
+
+                            echo '<div class="content">';
+                            echo '<p class="name">' . $name . '</p>';
+                            echo '<p class="message">' . $message . '</p>';
+                            echo '</div>';
+                        }
+
+                        if (!$hasData) { // If there's no data, display dummy content
+                            echo '<div class="content-empty">';
+                            echo '<p class="empty-message">Tiada ucapan lagi. Silalah beri ucapan kepada dua mempelai ini!</p>';
+                            echo '</div>';
+                        }
+                    } else {
+                        // Handle error with the query
+                        echo "Error querying the database: " . mysqli_error($connection);
+                    }
+
+                    mysqli_close($connection);
+
+                    ?>
+                    <!-- <div class="content">
                         <p class="name">Anonymous</p>
                         <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
                             in tincidunt vehicula. Nam fermentum
                             finibus
                             purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
-                    <div class="content">
-                        <p class="name">Anonymous</p>
-                        <p class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor velit
-                            in tincidunt vehicula. Nam fermentum
-                            finibus
-                            purus, id vulputate nibh rhoncus vel.</p>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="beri-ucapan-button reveal fade-bottom">
                     <button id="kehadiran-btn">
@@ -277,8 +311,7 @@
             <p>Beautiful in White x Canon in D</p>
             <p>(Piano Cover by Riyandi Kusuma)</p>
             <audio id="audio-player" controls autoplay loop>
-                <source type="audio/mp3"
-                    src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3">
+                <source type="audio/mp3" src="./music/Beautiful in White x Canon in D (Piano Cover by Riyandi Kusuma).mp3">
             </audio>
         </div>
     </div>
@@ -354,8 +387,7 @@
                 <input type="text" name="name" placeholder="Hazmi Hazim" required>
 
                 <label for="ucapan">Ucapan</label>
-                <textarea name="message" id="ucapan" cols="30" rows="10" placeholder="Selemat pengantin baru..."
-                    required></textarea>
+                <textarea name="message" id="ucapan" cols="30" rows="10" placeholder="Selemat pengantin baru..." required></textarea>
 
                 <div class="button">
                     <button type="submit" class="hantar" id="hantar">
