@@ -458,3 +458,11 @@ document.getElementById("btn-hadir").onclick = function() {
 document.getElementById("btn-tidak-hadir").onclick = function() {
     incrementCount('count_tidak_hadir.php', "Maaf, mungkin lain kali.", 'bx bxs-sad', 'rsvp-menu'); // Success message and optionally close RSVP menu
 };
+
+
+
+
+
+/** =====================================================
+ *  Image Carousel
+  ======================================================= */

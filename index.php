@@ -60,6 +60,7 @@ if (mysqli_num_rows($query2) == 0) {
     <link rel="stylesheet" href="./css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/logo.png" />
     <title>Fawwaz dan Aina</title>
 </head>
 
