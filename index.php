@@ -61,7 +61,7 @@ if (mysqli_num_rows($query2) == 0) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="./images/logo.png" />
-    <title>Fawwaz dan Aina</title>
+    <title>Fawwaz dan Liyana</title>
 </head>
 
 <body>
@@ -70,7 +70,7 @@ if (mysqli_num_rows($query2) == 0) {
             <div class="overlay-content">
                 <button id="toggle-content" class="toggle-button">
                     <p>Fawwaz</p>
-                    <p>Aina</p>
+                    <p>Liyana</p>
                     <p class="buka">Buka</p>
                 </button>
             </div>
@@ -85,7 +85,7 @@ if (mysqli_num_rows($query2) == 0) {
                 <p class="title fade-top-2">Walimatul urus</p>
                 <h2 class="fade-top-3">Fawwaz</h2>
                 <h2 class="fade-top-3">&</h2>
-                <h2 class="fade-top-3">Aina</h2>
+                <h2 class="fade-top-3">Liyana</h2>
                 <p class="date fade-top-4">
                     <span>Sabtu</span>
                     <span>|</span>
