@@ -1018,7 +1018,7 @@ section {
 }
 
 .toggle-menu .rsvp .button button i {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .toggle-menu .rsvp .button #btn-hadir i {
@@ -1155,8 +1155,16 @@ section {
     opacity: 0.9;
 }
 
-.toggle-menu .ucapan-tetamu .button button .bx {
-    font-size: 16px;
+.toggle-menu .ucapan-tetamu .button button i {
+    font-size: 24px;
+}
+
+.toggle-menu .ucapan-tetamu .button button i.bxs-paper-plane {
+    color: darkcyan;
+}
+
+.toggle-menu .ucapan-tetamu .button button i.bx-x {
+    color: red;
 }
 
 .toggle-menu .success-message {
