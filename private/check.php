@@ -51,7 +51,6 @@ if (!$connection) {
         <table>
             <thead>
                 <tr>
-                    <th>No.</th>
                     <th>Nama</th>
                     <th>Ucapan</th>
                 </tr>
@@ -62,11 +61,9 @@ if (!$connection) {
 
                 if ($query) {
                     while ($row = mysqli_fetch_assoc($query)) {
-                        $id = $row["id"];
                         $name = $row["nama_tetamu"];
                         $message = $row["ucapan_tetamu"];
                         echo '<tr>';
-                        echo '<td>' . $id . '</td>';
                         echo '<td>' . $name . '</td>';
                         echo '<td>' . $message . '</td>';
                         echo '</tr>';
