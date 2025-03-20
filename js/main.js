@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 });
 
-setupCountdown(".campaign-0", 1704038400000, 1721448000000);
+setupCountdown(".campaign-0", new Date().getMilliseconds(), 1924920000000);
 
 
 
@@ -101,10 +101,10 @@ setupCountdown(".campaign-0", 1704038400000, 1721448000000);
  *  Add to Calendar
   ======================================================= */
 const event = {
-    title: "Jemputan Kenduri Kahwin Fawwaz & Aina",
-    startDate: "20240720T033000Z", // YYYYMMDDTHHmmssZ (UTC)
-    endDate: "20240720T090000Z",
-    location: "1595 Lorong Muhibbah 16, Kampung Tersusun Muhibbah Batu 33, Temoh Perak, Malaysia",
+    title: "Jemputan Kenduri Kahwin John & Sarah",
+    startDate: "99991231T033000Z", // YYYYMMDDTHHmmssZ (UTC)
+    endDate: "99991231T090000Z",
+    location: "10A Jalan Seri Ampang 2, Kampung Pisang, 47300 Subang, Selangor, Malaysia",
     description: "Kami menjemput tuan/puan hadir ke majlis perkahwinan anakanda kami.",
 };
 
@@ -128,16 +128,16 @@ function generateICS(event) {
     const { title, startDate, endDate, location, description } = event;
 
     return `
-BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:${title}
-DTSTART:${startDate}
-DTEND:${endDate}
-LOCATION:${location}
-DESCRIPTION:${description}
-END:VEVENT
-END:VCALENDAR
+        BEGIN:VCALENDAR
+        VERSION:2.0
+        BEGIN:VEVENT
+        SUMMARY:${title}
+        DTSTART:${startDate}
+        DTEND:${endDate}
+        LOCATION:${location}
+        DESCRIPTION:${description}
+        END:VEVENT
+        END:VCALENDAR
     `.trim();
 }
 
@@ -172,16 +172,16 @@ function addAppleCalendar() {
  *  Location for Google and Waze
   ======================================================= */
 function openGoogleMaps() {
-    const latitude = 4.226058186123785;  // Example latitude
-    const longitude = 101.22905188341969;  // Example longitude
+    const latitude = 3.1575;  // Example latitude
+    const longitude = 101.7116;  // Example longitude
     const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=driving`;
 
     window.open(googleMapsUrl, "_blank");  // Open in a new tab
 }
 
 function openWaze() {
-    const latitude = 4.226058186123785;  // Example latitude
-    const longitude = 101.22905188341969;  // Example longitude
+    const latitude = 3.1575;  // Example latitude
+    const longitude = 101.7116;  // Example longitude
     //const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`;
     const wazeUrl = `waze://?ll=${latitude},${longitude}&navigate=yes`
 
