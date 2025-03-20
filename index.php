@@ -61,7 +61,7 @@ if (mysqli_num_rows($query2) == 0) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="./images/logo.png" />
-    <title>Fawwaz dan Liyana</title>
+    <title>John dan Sarah</title>
 </head>
 
 <body>
@@ -69,8 +69,8 @@ if (mysqli_num_rows($query2) == 0) {
         <div id="overlay" class="overlay">
             <div class="overlay-content">
                 <button id="toggle-content" class="toggle-button">
-                    <p>Fawwaz</p>
-                    <p>Liyana</p>
+                    <p>John</p>
+                    <p>Sarah</p>
                     <p class="buka">Buka</p>
                 </button>
             </div>
@@ -83,13 +83,13 @@ if (mysqli_num_rows($query2) == 0) {
             <div class="content">
                 <img src="./images/bismillah.png" alt="" class="fade-top-1">
                 <p class="title fade-top-2">Walimatul urus</p>
-                <h2 class="fade-top-3">Fawwaz</h2>
+                <h2 class="fade-top-3">John</h2>
                 <h2 class="fade-top-3">&</h2>
-                <h2 class="fade-top-3">Liyana</h2>
+                <h2 class="fade-top-3">Sarah</h2>
                 <p class="date fade-top-4">
                     <span>Sabtu</span>
                     <span>|</span>
-                    <span>20 Julai 2024</span>
+                    <span>31 December 9999</span>
                 </p>
             </div>
         </section>
@@ -102,9 +102,9 @@ if (mysqli_num_rows($query2) == 0) {
                     <p>Dengan penuh kesyukuran</p>
                     <p>kami</p>
                     <div class="parent">
-                        <p>Zairul Fuaad Bin Zakaria</p>
+                        <p>Ali Bin Abu</p>
                         <p>&</p>
-                        <p>Salina Binti Ahmad</p>
+                        <p>Miya Binti Kasim</p>
                     </div>
                     <p>Menjemput</p>
                     <p>Dato' | Datin | Tuan | Puan | Encik | Cik</p>
@@ -112,20 +112,20 @@ if (mysqli_num_rows($query2) == 0) {
                     <p>majlis perkahwinan putera kami</p>
                 </div>
                 <div class="two">
-                    <p>Muhamad Fawwaz Bin Zairul Fuaad</p>
+                    <p>Muhamad John Bin Ali</p>
                     <p>&</p>
-                    <p>Aina Liyana Binti Mohd Razali</p>
+                    <p>Nur Sarah Binti Anwar</p>
                 </div>
                 <div class="three">
                     <p class="title">Tempat</p>
-                    <p>LOT 1595, Lorong Muhibbah 16</p>
-                    <p>Kampung Tersusun Muhibbah Batu 33</p>
-                    <p>35350 Temoh Perak</p>
+                    <p>10A Jalan Seri Ampang 2</p>
+                    <p>Kampung Pisang</p>
+                    <p>47300 Subang, Selangor</p>
                 </div>
                 <div class="four">
                     <p class="title">Tarikh</p>
-                    <p>Sabtu, 20 Julai 2024</p>
-                    <p>Bersamaan 14 Muharram 1446H</p>
+                    <p>Sabtu, 31 December 9999</p>
+                    <p>Bersamaan 30 Zulhijjah 9999H</p>
                 </div>
                 <div class="five">
                     <p class="title">Masa</p>
@@ -270,9 +270,9 @@ if (mysqli_num_rows($query2) == 0) {
         <div class="calendar">
             <h1>Calendar</h1>
             <p>
-                <span>20 Julai 2024</span>
+                <span>31 December 9999</span>
                 <span>|</span>
-                <span>14 Muharram 1446H</span>
+                <span>30 Zulhijjah 9999H</span>
             </p>
             <div class="button">
                 <button class="google" onclick="addGoogleCalendar()">
@@ -290,9 +290,9 @@ if (mysqli_num_rows($query2) == 0) {
     <div id="location-menu" class="toggle-menu">
         <div class="location">
             <h1>Lokasi</h1>
-            <p>1595 Lorong Muhibbah 16</p>
-            <p>Kampung Tersusun Muhibbah Batu 33</p>
-            <p>35350 Temoh, Perak</p>
+            <p>10A Jalan Seri Ampang 2</p>
+            <p>Kampung Pisang</p>
+            <p>47300 Subang, Selangor</p>
             <div class="button" onclick="openGoogleMaps()">
                 <button class="google">
                     <i class='bx bxl-google'></i>
@@ -341,39 +341,39 @@ if (mysqli_num_rows($query2) == 0) {
                     <div class="first-section">
                         <i class='bx bxs-user-circle'></i>
                         <div class="name">
-                            <span>Zairul Fuaad</span>
+                            <span>Ali</span>
                             <span>Bapa Pengantin Lelaki</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+60185748120')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+60185748120')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+60123456789')"><i class='bx bx-phone'></i></button>
+                        <button onclick="openWhatsApp('+60123456789')"><i class='bx bxl-whatsapp'></i></button>
                     </div>
                 </div>
                 <div class="person">
                     <div class="first-section">
                         <i class='bx bxs-user-circle'></i>
                         <div class="name">
-                            <span>Salina Ahmad</span>
+                            <span>Miya Kasim</span>
                             <span>Ibu Pengantin Lelaki</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+60185790340')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+60185790340')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+60123456789')"><i class='bx bx-phone'></i></button>
+                        <button onclick="openWhatsApp('+60123456789')"><i class='bx bxl-whatsapp'></i></button>
                     </div>
                 </div>
                 <div class="person">
                     <div class="first-section">
                         <i class='bx bxs-user-circle'></i>
                         <div class="name">
-                            <span>Hariz Ilmi</span>
+                            <span>Xavier Hunter</span>
                             <span>Adik Pengantin Lelaki</span>
                         </div>
                     </div>
                     <div class="second-section">
-                        <button onclick="makePhoneCall('+601121563592')"><i class='bx bx-phone'></i></button>
-                        <button onclick="openWhatsApp('+601121563592')"><i class='bx bxl-whatsapp'></i></button>
+                        <button onclick="makePhoneCall('+60123456789')"><i class='bx bx-phone'></i></button>
+                        <button onclick="openWhatsApp('+60123456789')"><i class='bx bxl-whatsapp'></i></button>
                     </div>
                 </div>
             </div>
@@ -385,7 +385,7 @@ if (mysqli_num_rows($query2) == 0) {
             <h1>Sampaikan Ucapan</h1>
             <form id="form-ucapan" class="form-ucapan" action="insert_message.php" method="POST">
                 <label for="name">Nama Anda</label>
-                <input type="text" name="name" placeholder="Hazmi Hazim" required>
+                <input type="text" name="name" placeholder="Uzumaki Naruto" required>
 
                 <label for="ucapan">Ucapan</label>
                 <textarea name="message" id="ucapan" cols="30" rows="10" placeholder="Selemat pengantin baru..." required></textarea>
